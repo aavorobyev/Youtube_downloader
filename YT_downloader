@@ -1,0 +1,13 @@
+from pytube import YouTube
+#вводим ссылку
+url_video = 'https://www.youtube.com/watch?v=70RmF0rPj9o'
+
+
+try:
+	yt = YouTube(url_video)
+	filters = yt.streams.filter(progressive=True, file_extension='mp4')
+	#меняем название файла (и разрешение если нужно)
+	filters.get_highest_resolution().download(output_path='/home/aleksandr', filename='vdud_Akunin.mp4')
+	print('Video Downloaded Successfully')
+except Exception as e:
+	print(e)
